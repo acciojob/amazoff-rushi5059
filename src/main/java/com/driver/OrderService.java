@@ -1,68 +1,67 @@
 package com.driver;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class OrderService {
-
-    @Autowired
-    OrderRepository Orderepo;
+    OrderRepository orderRepository=new OrderRepository();
 
 
     public void addOrder(Order order) {
-        Orderepo.addOrder(order);
+        orderRepository.addOrder(order);
     }
+
 
     public void addPartner(String partnerId) {
-        Orderepo.addPartner(partnerId);
+        orderRepository.addPartner(partnerId);
     }
 
+
     public void addOrderPartnerPair(String orderId, String partnerId) {
-        Orderepo.addOrderPartnerPair(orderId,partnerId);
+        orderRepository.addOrderPartnerPair(orderId,partnerId);
     }
 
     public Order getOrderById(String orderId) {
-        return Orderepo.getOrderByID(orderId);
+        return orderRepository.getOrderById(orderId);
     }
 
     public DeliveryPartner getPartnerById(String partnerId) {
-        return Orderepo.getPartnerById(partnerId);
+        return orderRepository.getPartnerById(partnerId);
     }
 
     public Integer getOrderCountByPartnerId(String partnerId) {
-        return Orderepo.getOrderCountByPartnerId(partnerId);
+        return orderRepository.getOrderCountByPartnerId(partnerId);
     }
 
     public List<String> getOrdersByPartnerId(String partnerId) {
-        return Orderepo.getOrdersByPartnerId(partnerId);
+        return orderRepository.getOrdersByPartnerId(partnerId);
     }
 
-    public List<String> getAllOrders(List<String> orders) {
-        return Orderepo.getAllOrders(orders);
+    public List<String> getAllOrders() {
+        return orderRepository.getAllOrders();
     }
 
     public Integer getCountOfUnassignedOrders() {
-        return Orderepo.getCountOfUnassignedOrders();
+        return orderRepository.getCountOfUnassignedOrders();
     }
 
     public Integer getOrdersLeftAfterGivenTimeByPartnerId(String time, String partnerId) {
-        // should convert time here  string to int
-        return Orderepo.getOrdersLeftAfterGivenTimeByPartnerId(time, partnerId);
+        return orderRepository.getOrdersLeftAfterGivenTimeByPartnerId(time,partnerId);
     }
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
-        // return int to string which is done in repo only
-        return Orderepo.getLastDeliveryTimeByPartnerId(partnerId);
+        return orderRepository.getLastDeliveryTimeByPartnerId(partnerId);
     }
 
-    public void deletePartnerId(String partnerId) {
-        Orderepo.deletePartnerId(partnerId);
+    public void deletePartnerById(String partnerId) {
+        orderRepository.deletePartnerById(partnerId);
     }
 
     public void deleteOrderById(String orderId) {
-        Orderepo.deleteOrderById(orderId);
+        orderRepository.deleteOrderById(orderId);
     }
+
+
 }
